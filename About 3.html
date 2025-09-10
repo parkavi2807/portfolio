@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f9;
+    }
+    .todo {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    input {
+      width: 70%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #43a047;
+      color: #fff;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+    li {
+      background: #f9f9f9;
+      padding: 8px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .delete {
+      background: #e53935;
+      padding: 5px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="todo">
+    <h2>To-Do App</h2>
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    function addTask() {
+      let input = document.getElementById("taskInput");
+      let task = input.value.trim();
+      if (task) {
+        let li = document.createElement("li");
+        li.innerHTML = task + " <button class='delete' onclick='removeTask(this)'>X</button>";
+        document.getElementById("taskList").appendChild(li);
+        input.value = "";
+      }
+    }
+    function removeTask(button) {
+      button.parentElement.remove();
+    }
+  </script>
+</body>
+</html>
